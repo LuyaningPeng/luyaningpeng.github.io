@@ -225,7 +225,7 @@ banner:
 # Build settings
 # highlighter: none
 markdown: kramdown
-kmarkdown:
+kramdown:
   input: GFM
 
 plugins:
