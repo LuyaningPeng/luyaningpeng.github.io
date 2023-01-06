@@ -24,9 +24,9 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Your awesome title
-email: your-email@domain.com
-author: GitHub User
+title: Just A Blog
+email: penglyning@gmail.com
+author: Lyn Peng
 
 # Copyright setting
 # You can use any html code, currently below placeholders are available:
@@ -40,16 +40,14 @@ author: GitHub User
 #   "Copyright (c) 2017-{currentYear} <a href="https://example.com">{author}</a>"
 #   "Copyright © 2017-2021 Foobar"
 #
-copyright: "Unpublished Work (cleft) 2017-{currentYear} {author}"
+copyright: "Copyright (c) 2022-{currentYear} <a href="https://luyaningpeng.github.io/">{author}</a>"
 
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  记录生活中的小细节
 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. https://example.com
-favicon: "" # the favicon for your site
+url: "https://luyaningpeng.github.io/" # the base hostname & protocol for your site, e.g. https://example.com
+favicon: "assets\images\icon.png" # the favicon for your site
 
 # Yat date format
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
@@ -73,6 +71,8 @@ yat:
 
 # If you want to change site language, you can set lang option
 # lang: "en"  # default lang is en
+
+lang: "zh"
 
 # Translate languges
 # langs refer to https://cloud.google.com/translate/docs/languages
@@ -152,6 +152,12 @@ yat:
 #   - categories.html
 #   - tags.html
 #   - about.md
+header_pages:
+  - index.html
+  - categories.html
+  - tags.html
+  - archives.html
+  - about.html
 
 # Page default value
 # defaults:
@@ -159,6 +165,11 @@ yat:
 #     heading: "Your awesome heading"
 #     subheading: "Your awesome subheading"
 #     banner: "Your image url"
+defaults:
+  home:
+    heading: "快乐学习"
+    subheading: "记录学习中的点点滴滴"
+    banner: "assets\images\banners\banner.jpg"
 
 # Banner default settings
 # These banner settings are for global banner default, but you can also
