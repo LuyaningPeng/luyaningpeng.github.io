@@ -36,21 +36,21 @@ tags: [Distributed-Systems]
 
 > #### Lamport 时钟算法
 >
-> **on** 初始化 **do**
-> 	$ t := 0 $ // 每个节点都有自己的局部变量 $ t $
+> **on** 初始化 **do** \\
+> 	$ t := 0 $ // 每个节点都有自己的局部变量 $ t $ \\
 > **end on**
 >	
-> **on** 本地节点上任意事件发生 **do**
-> 	$t := t + 1$
+> **on** 本地节点上任意事件发生 **do** \\
+> 	$t := t + 1$ \\
 > **end on**
 > 
-> **on** 请求发送消息 $m$ **do**
+> **on** 请求发送消息 $m$ **do** \\
 > 	$t := t + 1; 通过底层网络链接 send($t, m$)
 > end on
 > 
-> **on** 通过底层网络连接接受 $(t', m)$ **do**
-> 	$t := max(t, t') + 1$
-> 	将 $m$ 传递给应用程序
+> **on** 通过底层网络连接接受 $(t', m)$ **do** \\
+> 	$t := max(t, t') + 1$ \\
+> 	将 $m$ 传递给应用程序 \\
 > **end on**
 > 
 > **Slide 66**
@@ -125,21 +125,21 @@ Lamport 时间戳只是一个整数（可能附有节点名称），而向量时
 
 > #### 矢量时钟算法
 >
-> **on** 节点 $N_i$ 初始化  **do**
->	$ T := \langle 0, 0, \dots, 0 \rangle$ // 节点 $N_i$ 的局部变量
+> **on** 节点 $N_i$ 初始化  **do** \\
+>	$ T := \langle 0, 0, \dots, 0 \rangle$ // 节点 $N_i$ 的局部变量 \\
 > **end on**
 > 
-> **on** 节点 $N_i$ 上发生任意事件 **do**
-> 	$T[i] := T[i] + 1$
+> **on** 节点 $N_i$ 上发生任意事件 **do** \\
+> 	$T[i] := T[i] + 1$ \\
 > **end on**
 > 
-> **on** 节点 $N_i$ 请求发送消息 $m$ **do**
-> 	$T[i] := T[i] + 1$；通过网络发送 $(T, m)$
+> **on** 节点 $N_i$ 请求发送消息 $m$ **do** \\
+> 	$T[i] := T[i] + 1$；通过网络发送 $(T, m)$ \\
 > **end on**
 > 
-> **on** 节点 $N_i$ 通过网络接收到 $(T', m)$ **do**
-> 	对于每个 $j \in {1, \dots, n}$，执行 $T[j] := max(T[j], T'[j])$
-> 	$T[i] := T[i] + 1$；传递 $m$ 给应用程序
+> **on** 节点 $N_i$ 通过网络接收到 $(T', m)$ **do** \\
+> 	对于每个 $j \in {1, \dots, n}$，执行 $T[j] := max(T[j], T'[j])$ \\
+> 	$T[i] := T[i] + 1$；传递 $m$ 给应用程序 \\
 > **end on**
 > 
 > **Slide 70**
@@ -152,7 +152,7 @@ Slide 71展示了该算法的实际应用示例。请注意，当 $C$ 从 $B$ �
 >
 > <img src="../../../../assets/images/distributed-system/slide71.png" style="zoom:50%;" />
 >
-> 一个事件 $e$ 的向量时间戳表示一组事件， $e$ 及其因果依赖：$\left\{ e \right \} \cup \left \{ a \mid a \rightarrow e \right \}$
+> 一个事件 $e$ 的向量时间戳表示一组事件， $e$ 及其因果依赖：$\left \lbrace e \right\rbrace \cup \left \lbrace a \mid a \rightarrow e \right\rbrace$
 >
 > 比如，$\langle 2, 2, 0 \rangle$ 表示A发生前两个事件，B发生前两个事件和C未发生事件
 >
@@ -162,15 +162,15 @@ Slide 71展示了该算法的实际应用示例。请注意，当 $C$ 从 $B$ �
 >
 > 定义向量时间戳的以下顺序（在具有 $n$ 个节点的系统中）：
 >
-> * $ T = T' \text{ iff } T[i] = T'[i] \text{ for all } i \in \left \{1, \dots, n \right \} $
+> * $ T = T' \text{ iff } T[i] = T'[i] \text{ for all } i \in \left \lbrace1, \dots, n \right\rbrace $
 >
-> * $ T \leq T' \text{ iff } T[i] \leq T'[i] \text{ for all } i \in \left \{1, \dots, n \right \} $
+> * $ T \leq T' \text{ iff } T[i] \leq T'[i] \text{ for all } i \in \left \lbrace1, \dots, n \right\rbrace $
 >
 > * $ T < T' \text{ iff } T \leq T' \text{ and } T \ne T' $
 >
 > * $ T \parallel T' \text{ iff } T \nleq T' \text{ and } T' \nleq T $
 >
-> $ V(a) \leq V(b) \text{ iff } (\left \{ a \right \} \cup \left \{ e \mid e \rightarrow a \right \} \subset ( \left \{ b \right \} \cup \left \{ e \mid e \rightarrow b \right \}$
+> $ V(a) \leq V(b) \text{ iff } (\left \lbrace a \right\rbrace \cup \left \lbrace e \mid e \rightarrow a \right\rbrace \subset ( \left \lbrace b \right\rbrace \cup \left \lbrace e \mid e \rightarrow b \right\rbrace$
 >
 > 此排序的性质：
 >
@@ -238,16 +238,16 @@ Slide 71展示了该算法的实际应用示例。请注意，当 $C$ 从 $B$ �
 
 > #### 可靠广播的形式
 >
-> **FIFO广播**
+> **FIFO广播** \\
 > 如果 $m_1$ 和 $m_2$ 由同一个节点广播，且 $\text{broadcast}(m_1) \rightarrow \text{broadcast}(m_2)$，则 $m_1$ 必须在 $m_2$ 之前交付。
 >
-> **Causal广播**
+> **Causal广播** \\
 > 如果 $\text{broadcast}(m_1) \rightarrow \text{broadcast}(m_2)$, 则 $m_1$ 必须在 $m_2$ 之前交付。
 > 
-> **全序广播**
+> **全序广播** \\
 > 如果在一个节点上，$m_1$ 在 $m_2$ 之前交付，则对于所有节点， $m_1$ 都必须在 $m_2$ 之前交付。
 > 
-> **FIFO全序广播**
+> **FIFO全序广播** \\
 > FIFO广播与全序广播的组合
 > 
 > **Slide 75**
@@ -314,7 +314,7 @@ Slide 78 和 79 展示了两个全序广播的示例。在 Slide 78 上，三个
 
 我们可以将这些不同的广播协议排列成一个层次结构，如Slide 80 所示。例如，FIFO 全序广播是一个比Causal广播严格更强健的模型；换句话说，每个有效的 FIFO全序广播协议也是一个有效的Causal广播协议（反之，不是），其他协议依此类推。
 
-**习题 15. ** *证明Causal广播也满足 FIFO 广播的要求，和 FIFO 全序广播也满足Causal广播的要求。*
+**习题 15.** *证明Causal广播也满足 FIFO 广播的要求，和 FIFO 全序广播也满足Causal广播的要求。*
 
 ### 4.3 广播算法
 
@@ -365,21 +365,21 @@ Gossip协议并不严格保证所有节点都会收到消息：有可能在节�
 
 > #### FIFO广播算法
 >
-> **on** 初始化 **do**
-> 	$sendSeq := 0; \ delivered := \langle 0, 0, \dots, 0 \rangle; \ buffer := \left \{ \right \}$
+> **on** 初始化 **do** \\
+> 	$sendSeq := 0; \ delivered := \langle 0, 0, \dots, 0 \rangle; \ buffer := \left \lbrace \right\rbrace$ \\
 > **end on**
 >
-> **on** 节点 $N_i$ 请求广播 $m$ **do**
-> 	通过可靠广播发送 $(i, sendSeq, m)$
-> 	$sendSeq := sendSeq + 1$
+> **on** 节点 $N_i$ 请求广播 $m$ **do** \\
+> 	通过可靠广播发送 $(i, sendSeq, m)$ \\
+> 	$sendSeq := sendSeq + 1$ \\
 > **end on**
 >
-> **on** 节点 $N_i$ 从可靠广播接收 $msg$ **do**
-> 	$buffer := buffer \cup \left \{ msg \right \}$
-> 	**while** $\exist sender, m. (sender, delivered[sender], m) \in buffer$ **do**
-> 		交付 $m$ 给应用程序
-> 		$delivered[sender] := delivered[sender] + 1$
-> 	**end while**
+> **on** 节点 $N_i$ 从可靠广播接收 $msg$ **do** \\
+> 	$buffer := buffer \cup \left \lbrace msg \right\rbrace$ \\
+> 	**while** $\exists sender, m. (sender, delivered[sender], m) \in buffer$ **do** \\
+> 		交付 $m$ 给应用程序 \\
+> 		$delivered[sender] := delivered[sender] + 1$ \\
+> 	**end while** \\
 > **end on**
 >
 > **Slide 84**
@@ -390,23 +390,23 @@ Causal广播算法有点类似于FIFO广播；我们不是在广播的每条消�
 
 > #### Causal广播算法
 >
-> **on** 初始化 **do**
-> 	$sendSeq := 0; \ delivered := \langle 0, 0, \dots, 0 \rangle; \ buffer := \left \{ \right \}$
+> **on** 初始化 **do** \\
+> 	$sendSeq := 0; \ delivered := \langle 0, 0, \dots, 0 \rangle; \ buffer := \left \lbrace \right\rbrace$ \\
 > **end on**
 >
-> **on** 节点 $N_i$ 请求广播 $m$ **do**
-> 	$deps := delivered; \ deps[i] := sendSeq$
-> 	通过可靠广播发送 $(i, deps, m)$
-> 	$sendSeq := sendSeq + 1$
+> **on** 节点 $N_i$ 请求广播 $m$ **do** \\
+> 	$deps := delivered; \ deps[i] := sendSeq$ \\
+> 	通过可靠广播发送 $(i, deps, m)$ \\
+> 	$sendSeq := sendSeq + 1$ \\
 > **end on**
 >
-> **on** 节点 $N_i$ 从可靠广播接收 $msg$ **do**
-> 	$buffer := buffer \cup \left \{ msg \right \}$
-> 	**while** $\exist (sender, deps, m) \in buffer. \ deps \leq delivered$ **do**
-> 		交付 $m$ 给应用程序
-> 		$buffer := buffer \backslash \left \{ (sender, deps, m) \right \}$
->		$delivered[sender] := delivered[sender] + 1$
-> 	**end while**
+> **on** 节点 $N_i$ 从可靠广播接收 $msg$ **do** \\
+> 	$buffer := buffer \cup \left \lbrace msg \right\rbrace$ \\
+> 	**while** $\exists (sender, deps, m) \in buffer. \ deps \leq delivered$ **do** \\
+> 		交付 $m$ 给应用程序 \\
+> 		$buffer := buffer \backslash \left \lbrace (sender, deps, m) \right\rbrace$ \\
+>		$delivered[sender] := delivered[sender] + 1$ \\
+> 	**end while** \\
 > **end on**
 >
 > **Slide 85**

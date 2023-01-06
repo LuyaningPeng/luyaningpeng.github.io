@@ -228,6 +228,8 @@ markdown: kramdown
 kmarkdown:
   input: GFM
 
+usemathjax: true
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
