@@ -40,14 +40,14 @@ author: Lyn Peng
 #   "Copyright (c) 2017-{currentYear} <a href="https://example.com">{author}</a>"
 #   "Copyright © 2017-2021 Foobar"
 #
-copyright: "Copyright (c) 2022-{currentYear} <a href="https://luyaningpeng.github.io/">{author}</a>"
+copyright: "Copyright (c) 2022-{currentYear} <a href=\"https://luyaningpeng.github.io/\">{author}</a>"
 
 description: >- # this means to ignore newlines until "baseurl:"
   记录生活中的小细节
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://luyaningpeng.github.io/" # the base hostname & protocol for your site, e.g. https://example.com
-favicon: "assets\images\icon.png" # the favicon for your site
+favicon: "/assets/images/icon.png" # the favicon for your site
 
 # Yat date format
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
@@ -59,6 +59,7 @@ yat:
 
 # If you don't want transparent header, you can set false
 # header_transparent: true
+header_transparent: false
 
 # If you want to change the content width, you can set to another value
 # content_width: "920px"
@@ -72,7 +73,7 @@ yat:
 # If you want to change site language, you can set lang option
 # lang: "en"  # default lang is en
 
-lang: "zh"
+lang: "zh-CN"
 
 # Translate languges
 # langs refer to https://cloud.google.com/translate/docs/languages
@@ -80,26 +81,28 @@ lang: "zh"
 #   - lang: en
 #     img: https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png
 #     text: English
-#
+
 #   - lang: fr
 #     img: https://cdn.countryflags.com/thumbs/france/flag-400.png
 #     text: French
-#
+
 #   - lang: zh-CN
 #     img: https://cdn.countryflags.com/thumbs/china/flag-400.png
 #     text: Chinese(Simple)
-#
+
 #   - lang: ja
 #     img: https://cdn.countryflags.com/thumbs/japan/flag-400.png
 #     text: Japanese
-#
+
 #   - lang: ko
 #     img: https://cdn.countryflags.com/thumbs/south-korea/flag-400.png
 #     text: Korean
-#
+
 #   - lang: ru
 #     img: https://cdn.countryflags.com/thumbs/russia/flag-400.png
 #     text: Russian
+
+translate_langs: []
 
 # You can choose a theme color
 # Default theme colors as below:
@@ -169,7 +172,7 @@ defaults:
   home:
     heading: "快乐学习"
     subheading: "记录学习中的点点滴滴"
-    banner: "assets\images\banners\banner.jpg"
+    banner: "/assets/images/banners/banner.png"
 
 # Banner default settings
 # These banner settings are for global banner default, but you can also
@@ -186,6 +189,9 @@ defaults:
 #   min_height: null        # Banner minimum height
 #   heading_style: null     # Custom heading style (e.g. "font-weight: bold; text-decoration: underline")
 #   subheading_style: null  # Custom subheading style (e.g. color: gold)
+
+banner:
+  image: "/assets/images/banners/banner.png"
 
 # Excerpt size setting
 # excerpt_size: 350
